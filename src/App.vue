@@ -7,9 +7,15 @@
 export default {
   name: 'app'
 }
+
+
 </script>
 
-<style>
+<style lang="scss">
+$background: #ccc;
+body {
+	background: $background;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
