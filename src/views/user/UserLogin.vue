@@ -27,6 +27,9 @@
 </template>
 
 <script>
+	import {mapActions} from 'vuex'
+	import {port_user, port_code} from 'common/port_uri'
+	import {SET_USER_INFO} from 'store/actions/type'
     export default{
         data() {
             return {
