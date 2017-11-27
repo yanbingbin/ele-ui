@@ -7,16 +7,16 @@
 					<el-input v-model="search.name" placeholder="请输入要查找的姓名"></el-input>
 				</el-form-item>
 				<el-form-item>
-					<el-button type="primary" @click="getUsers">查找</el-button>
+					<el-button @click="getUsers" type="primary">查找</el-button>
 				</el-form-item>
 				<el-form-item>
-					<el-button type="primary">新增</el-button>
+					<el-button @click="handleAdd" type="primary">新增</el-button>
 				</el-form-item>
 			</el-form>
 		</el-col>
 		
 		<!--表的内容-->
-		<el-table :data="users" height>
+		<el-table :data="users" heightlight-current-row v-loading="listLoading" style="width: 100%">
 			<el-table-column type="selection" width="55"></el-table-column>
 			<el-table-column type="index" width="60"></el-table-column>
 			<el-table-column prop="name" label="姓名" width="120" sortable></el-table-column>
@@ -26,8 +26,8 @@
 			<el-table-column prop="addr" label="地址" min-width="180" sortable></el-table-column>
 			<el-table-column label="操作" width="150">
 				<template slot-scope="scope">
-					<el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-					<el-button size="samll" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+					<el-button @click="handleEdit(scope.$index, scope.row)" size="small">编辑</el-button>
+					<el-button @click="handleDel(scope.$index, scope.row)" size="small" type="danger">删除</el-button>
 				</template>
 			</el-table-column>
 		</el-table>
@@ -40,7 +40,7 @@
 		</el-col> 
 		
 		<!--编辑界面-->
-		<el-dialog title="编辑信息" v-model="editFormVisible" :close-on-click-modal="false">
+		<el-dialog title="编辑信息" :visible="editFormVisible" :close-on-click-modal="false" :show-close="false">
 			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
 				<el-form-item label="姓名" prop="name">
 					<el-input v-model="editForm.name"></el-input>
@@ -55,7 +55,7 @@
 					<el-input-number v-model="editForm.age" :min="0" :max="140"></el-input-number>
 				</el-form-item>
 				<el-form-item label="生日">
-					<el-data-picker v-model="editForm.birth" type="date" placeholder="请选择日期"></el-data-picker>
+					<el-date-picker v-model="editForm.birth" type="date" placeholder="请选择日期"></el-date-picker>
 				</el-form-item>
 				<el-form-item label="地址">
 					<el-input type="textarea" v-model="editForm.addr"></el-input>
@@ -68,7 +68,7 @@
 		</el-dialog>
 		
 		<!--新增界面-->
-		<el-dialog title="新增信息" v-model="addFormVisible" :close-on-click-modal="false">
+		<el-dialog title="新增信息" :visible="addFormVisible" :close-on-click-modal="false" :show-close="false">
 			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
 				<el-form-item label="姓名" prop="name">
 					<el-input v-model="addForm.name"></el-input>
@@ -98,6 +98,7 @@
 </template>
 
 <script>
+	import { Users } from '../../mock/data/user'
 	export default {
 		data() {
 			return {
@@ -143,22 +144,41 @@
 		methods: {
 			// 性别格式化转换
 			formatSex(row, column) {
-				return row.sex === '1' ? '男' : row.sex === '0' ? '女' : '未知';
+				return row.sex === 1 ? '男' : row.sex === 0 ? '女' : '未知';
 			},
 			getUsers() {
 				let para = {
 					page: this.page,
 					name: this.search.name
 				};
-				this.listLoading = true;
-				
+//				this.listLoading = true;
+				this.users = Users;
+			},
+			handleAdd() {
+				this.addFormVisible = true; console.log(this.addFormVisible + '  ' + 1)
+				this.addForm = {
+					name: '',
+					sex: -1,
+					age: 0,
+					birth: '',
+					addr: ''
+				}
+			},
+			handleEdit(index, row) {
+				this.editFormVisible = true;
+				this.editForm = row;
 			},
 			removeSel() {
 				
 			},
 			handleCurrentChange() {
 				
+			},
+			handleClose() {
 			}
+		},
+		mounted() {
+			this.getUsers();
 		}
 	}
 </script>

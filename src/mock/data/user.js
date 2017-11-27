@@ -1,4 +1,4 @@
-import Mock from 'Mock.js'
+import Mock from 'mockjs'
 
 const LoginUsers = [
 	{
@@ -12,14 +12,14 @@ const LoginUsers = [
 
 const Users =[];
 
-for (let i=0; i < 99; i++) {
+for (let i=0; i < 50; i++) {
 	Users.push(Mock.mock({
-		'id|+1': 2,
+    	'id|+1': 2,
 		name: Mock.Random.cname(),
 		sex: Mock.Random.integer(0,1),
 		'age|18-60': 1,
-		birth: Mock.mock.date(),
-		addr: Mock.mock('@country(true)')
+		birth: Mock.Random.date(),
+		addr: Mock.mock('@county(true)'),
 	}));
 }
 
