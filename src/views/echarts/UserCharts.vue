@@ -176,5 +176,6 @@
 <style>
 	.chart {
 		float: left;
+		margin: 20px 0 0 80px;
 	}
 </style>
