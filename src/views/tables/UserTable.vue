@@ -165,6 +165,10 @@
 				}
 			}
 		},
+		mounted() {
+			this.initUsers();
+			this.getUsers();
+		},
 		methods: {
 			// 用户数据初始化
 			initUsers() {
@@ -287,10 +291,6 @@
 					}
 				})
 			}
-		},
-		mounted() {
-			this.initUsers();
-			this.getUsers();
 		}
 	}
 </script>

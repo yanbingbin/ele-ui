@@ -9,7 +9,7 @@ for (let i=0; i < 100; i++) {
     	'id|+1': 2,
 		name: Mock.Random.cname(),
 		sex: Mock.Random.integer(0,1),
-		'age|18-60': 1,
+		'age|0-100': 1,
 		birth: Mock.Random.date(),
 		addr: Mock.mock('@county(true)'),
 	}));
