@@ -12,16 +12,21 @@ export default new Router({
     	name: 'Home',
     	component: Home,
     	children: [
-    		{
-		  		path: '/userCharts',
-		  		name: 'UserCharts',
-		  		component: UserCharts
-		  	},
+		    {
+		      path: '/',
+		      name: 'UserTable',
+		      component: UserTable
+		    },
 		    {
 		      path: '/userTable',
 		      name: 'UserTable',
 		      component: UserTable
-		    }
+		    },
+    		{
+		  		path: '/userCharts',
+		  		name: 'UserCharts',
+		  		component: UserCharts
+		  	}
     	]
     }
   	

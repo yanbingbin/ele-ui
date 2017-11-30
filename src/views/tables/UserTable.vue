@@ -172,8 +172,8 @@
 		methods: {
 			// 用户数据初始化
 			initUsers() {
-				this.storeUsers = Users;
-				this.users = Users;
+				this.storeUsers = Users.users;
+				this.users = Users.users;
 			},
 			// 性别格式化转换
 			formatSex(row, column) {
