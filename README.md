@@ -7,6 +7,8 @@
 ``` bash
 # install dependencies
 npm install
+npm i element-ui -S  安装element-ui
+npm install --save mockjs  安装mock.js
 
 # serve with hot reload at localhost:8080
 npm run dev
