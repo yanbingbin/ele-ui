@@ -333,7 +333,7 @@ Address
 		参数prefix: 可选 true .指示县所属的省份,市
 			Random.county(true) => "重庆 重庆市 巴南区"
 			
-			
+随机生成一个邮政编码（六位数字）。			
 Random.zip()  => "282854"
 
 
