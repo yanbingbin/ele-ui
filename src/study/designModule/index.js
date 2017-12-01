@@ -171,3 +171,26 @@ validataList = {
 
 
 迭代器模式: 迭代器模式提供一种方法顺序访问一个聚合对象中各个元素，而又不需要暴露该方法中的内部表示。
+
+var handler = {
+	get: function(target, name) {
+		if (name === 'prototype') {
+			return Object.proptotype;
+		}
+		return 'Hello, ' + name;
+	},
+	apply: function (target, this.Binding, args) {
+		return args[0];
+	},
+	construct: function(target, args) {
+		return {value: args[1]};
+	}
+}
+
+var fproxy = new Proxy(function(x, y) {
+	return x + y;
+}, handler);
+
+
+
+

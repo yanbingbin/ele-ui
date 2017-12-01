@@ -33,6 +33,16 @@
 					<el-menu-item index="3-2" @click="$router.push('/userCharts')">年龄分布</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
+			<el-submenu index="4">
+				<template slot="title">
+					<i class="el-icon-location"></i>
+					<span slot="title">省市级联</span>
+				</template>	
+				<el-menu-item-group>
+					<el-menu-item index="3-1" @click="$router.push('/city')">省市区级联</el-menu-item>
+					<el-menu-item index="3-1" @click="$router.push('/city2')">省市级联</el-menu-item>
+				</el-menu-item-group>
+			</el-submenu>
 		</el-menu>
 	</div>
 
