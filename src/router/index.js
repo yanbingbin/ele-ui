@@ -5,6 +5,7 @@ import UserCharts from '@/views/echarts/UserCharts'
 import Home from '@/views/home/Home'
 import City from '@/views/area/regionDataPlus'
 import City2 from '@/views/area/provinceAndCityDataPlus'
+import Login from '@/views/user/UserLogin'
 Vue.use(Router)
 
 export default new Router({
@@ -40,7 +41,11 @@ export default new Router({
 		  		component: City2
 		  	}
     	]
-    }
-  	
+    },
+  	{
+  		path: '/login',
+  		name: Login,
+  		component: Login
+  	}
   ]
 })
